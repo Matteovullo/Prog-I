@@ -1,0 +1,68 @@
+CAST 
+for(int i=0;i<DIM;i++){
+	if(typeid(*vett[i])==typeid(c)){
+		sum1+=((c*)vett[i])->g(5);
+
+OPERATORE<<
+FUORI DALLA CLASSE:
+ostream& operator<<(ostream& s,a& obj){
+	return obj.put(s);
+}
+		
+	}
+DENTRO LA CLASSE A: 
+         virtual ostream& put(ostream& os){
+        	string aux;
+        	for(int i=0;i<a::getlen();i++ ){
+        		aux+=a::get(i);
+			}
+        	return os<<typeid(*this).name()<<")"<<"base:"<<aux<<"----";
+    	
+	}
+
+
+DENTRO LA CLASSE B / C :
+
+ostream& put(ostream& os){
+	return a::put(os)<<"str="<<this->str<<"k="<<this->k<<"extraxt(3)="<<b::extract(3);
+	}
+GENERATORE NUMERI CASUALI DOUBLE : 
+vec[i] = a + ((double)rand() / RAND_MAX) * (b - a + 1);
+
+
+
+PUO SERVIRE : 
+string g(char c) const
+        {
+            string r;
+            r=this->x;
+	    r=r+c; 
+            return r;
+        }
+
+TEMPLATE 
+template<class T>
+class C : public A {
+    private:
+        T y;
+
+    public:
+        C(short n, double x, double y) : A(n, x, y) {
+            if(typeid(T) == typeid(short)) {
+                this->y = n;
+            }
+            else {
+                this->y = 1 + pow(cos(n), 2);
+                //this->y = 1 + cos(n) * cos(n);
+            }
+        }
+
+UTILIZZO TEMPLATE
+for(int i = 0; i < DIM; i++) {
+        if(vett[i]->foo(3) > max) max = vett[i]->foo(3);
+        if(typeid(*vett[i]) == typeid(C<double>)) {
+            somma_g += ((C<double>*)vett[i])->g(0.5);
+            count++;
+        }
+    }
+    cout << "Max = " << max << ", " << "avg = " << somma_g/count;

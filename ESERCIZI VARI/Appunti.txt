@@ -1,0 +1,197 @@
+GENERA RANDOM TRA A E Z:
+
+... = (char)(rand()%(( int ) 'z' - (int) 'a' + 1) + (int) 'a');
+
+LIBRERIE:
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <sstream>
+#include <cmath>
+#include <typeinfo>
+using namespace std;
+
+TEMPLATE:
+template <typename T> class C:public A{
+
+	private :
+		T x;
+
+T g(T k){
+		return 2*x*(k+1);
+	}
+
+
+CONTROLLO TIPO:
+if (typeid(x)==typeid(short))
+
+
+
+OVERLOAD OPERATORE <<:
+class a{
+		virtual ostream& put(ostream &s){
+			s<<" ptr=[ ";
+			for(int i=0;i<len;i++)
+				s<<ptr[i]<<" ";
+			s<<"]";
+			return s;
+			
+		}
+};
+
+class b{
+		ostream& put(ostream &s){
+			s<<typeid(*this).name()<<" ";
+			A::put(s);
+			s<<"alpha= "<<alpha<<" "<<endl;	
+			s<<"foo(5)= "<<foo(5)<<" "<<endl;	
+			return s;
+		}
+
+};
+
+class c{
+		ostream& put(ostream &s){
+			s<<typeid(*this).name()<<" ";
+			A::put(s);
+			s<<"   x= "<<x<<" "<<endl;
+			s<<"   foo(5)= "<<foo(5)<<" "<<endl;
+			s<<"   g(5)= "<<g(5)<<" "<<endl;	
+			return s;
+		}
+
+};
+
+//fuori dalle classi:
+
+ostream &operator << (ostream &left, A &obj){//per fare overload degli operatori	
+	return obj.put(left);
+}
+
+int main(){
+	cout << "Punto I: " << endl;
+   	for(int i=0; i<DIM; i++){
+       	cout << i << ")" << *vett[i]  <<  endl;
+	}
+}
+
+OVERLOAD OPERATORE[]:
+class A{
+	double &operator[](short indice){
+     		return ptr[indice]; 
+    	}
+};
+
+int main(){
+	cout<<endl<<"PUNTO III:  "<<endl;
+  	cout<<1<<") "<<*vett[1]<<"\n";
+  	(*vett[1])[2]=0.9; 
+  	cout<<1<<") "<<*vett[1]<<"\n";
+}
+
+
+
+
+SOMMA O MEDIA TRA VALORI DI FUNZIONI:
+//SOLITAMENTE PUNTO 2:
+	cout << "Punto II: " << endl;
+	int max=INT_MIN;
+	int somma=0;
+	
+	for(int i=0;i<DIM;i++){
+		if(typeid(*vett[i])==typeid(C<double>)){
+			C<double>* tmp=(C<double>*)vett[i];
+			if(tmp->g(5)>somma){
+				somma=tmp->g(5);
+			}
+		}
+	}
+	
+	for(int i=0;i<DIM;i++){
+		if(vett[i]->foo(5)>max)
+			max=vett[i]->foo(5);
+	}
+	cout<<"il massimo di foo(5) e': "<<max<<endl;
+	cout<<endl;
+
+	cout<<"la somma di g(5) e' : "<<somma<<endl;
+	cout<<endl;
+
+
+CONCATENAZIONE TRA STRINGHE
+string g(char c) {
+			stringstream ss;
+			string tmp;
+			ss<<x;
+			ss<<c;
+			ss>>tmp;
+			return tmp;
+		}
+
+int main(){//stampa concatenazione stringa g('h')
+
+	stringstream sx;
+	string tmp;
+	for(int i=0;i<DIM;i++){
+		if(typeid(*vett[i]) == typeid(C)){
+			sx<<((C*)vett[i])->g('h');
+		}
+	}
+	sx>>tmp;
+	cout<<"la stringa e': "<<tmp<<endl;
+}
+
+STAMPA LA MEDIA
+	cout<<"Punto II: "<<endl;
+	double m=0.0;
+	for(int i=0;i<DIM;i++){
+		m += vett[i]->elab(3);	
+	}
+	cout<<"la media e': "<<m/DIM<<endl;
+
+
+
+
+
+OVERLOAD OPERATORE ++ PREFISSO
+int main(){	
+	cout << "Punto III: " << endl;
+	for(int i=0;i<DIM;i++){
+		if(typeid(*vett[i]) == typeid(B)){
+			cout<< *vett[i]<<endl;	
+			B *ptr_b = dynamic_cast<B*>(vett[i]);      //passo index per index ad un puntatore a C d'appoggio 
+			++(*ptr_b);
+			cout<<*ptr_b<<endl;
+		}
+	}
+}
+
+
+DENTRO LA CLASSE DOVE SI DEVE FARE L'OVERLOAD ++ PREFISSO
+Class C{
+		C &operator ++(){
+			p++;		   //prefisso per oggetti C
+			return *this;
+		}  
+}
+
+OVERLOAD OPERATORE ++ POSTFISSO
+int main(){
+			cout << "Punto III: " << endl;
+	
+			cout<< *vett[0]<<endl;	
+			B *ptr_b = dynamic_cast<B*>(vett[0]);      //passo index per index ad un puntatore a C d'appoggio 
+			(*ptr_b)++;
+			cout<<*ptr_b<<endl;
+
+}
+
+
+DENTRO LA CLASSE POSTFISSO
+Class B{
+		B &operator ++(int){
+			B aux = *this;
+			p++;		   //prefisso per oggetti B
+			return *this;
+		}   
+}

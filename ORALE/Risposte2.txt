@@ -1,0 +1,273 @@
+domanda 1
+
+domanda 2
+
+domanda 3
+tipo <nome> = dato di quel dipo
+
+int x = 5;
+
+x = 5;
+
+{
+	int y=5;
+}
+cout << y << endl;
+
+const int x=500;
+
+cout << x << endl;
+
+x = 4; //errore!!!
+
+#define VAR 100
+
+int y=VAR + 5;
+
+domanda 4
+
+#include <iostream>
+using namespace std;
+
+std::cout << "ciao" << endl;
+
+int x;
+std::cin >> x;
+
+#include <fstream>
+
+ifstream file("text.txt");
+string s;
+
+if(file.is_open()){
+	file >> s;
+	cout << s << endl;
+}
+
+while(getline(file, s)){
+	cout << s << endl;
+}
+
+file.close;
+
+ofstream file("text.txt");
+	
+file << "ciao" << endl;
+
+file.close();
+
+
+fstream file("testo.txt", std::fstream::in | std::gstream::out);
+
+
+#include <cstdlib>
+int main(){
+	
+	int x;
+	cin >> x;
+	if(cin.fail()){
+		return 0;	//return EXIT_SUCCESS
+	}else{
+		cerr << "Errore!" << endl;
+		return -1;	//return EXIT_FAILURE
+	}
+	
+	int x;
+	bool finito=false;
+	do{
+		cin >> x;
+		if(cin.fail()){
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}else{
+			finito=true;
+		}
+	}while(!finito);
+	
+	
+	
+	int x;
+	bool finito=false;
+	do{
+		cin >> x;
+		if(cin.eof()){
+			finito=true;
+		}
+	}while(!finito);
+}
+
+
+domanda 6
+
+tipo di ritorno nome(tipo t1, tipo t2, ect...)
+
+int somma(int i1, int i2){
+	return i1+i2;
+}
+
+int somma(int i1, int i2, int i3){
+	return i1+i2+i3;
+}
+
+int x = somma(5, 10);
+int x = somma(5, 10, 5);
+
+
+template<typename T>
+T somma(T a, T b){
+	return a+b;
+}
+
+somma<int>(5,10);
+
+domanda 7
+
+int a[5]={1, 2, 3, 4, 5};
+int a[]={1, 2, 3};
+int a[5]={1, 2, 3};
+int a[5];
+a[4]=50;
+
+int b[5][5];
+int b[][5]={1, 2, 3, 4, 5};
+
+int* array=new int[5]{1, 2, 3, 4, 5};
+
+a 
+*a
+a+1
+a+2
+*(a+1)
+
+a++ //errore
+
+int* ptr=a
+
+ptr++;
+
+domanda 8
+
+int x=5;
+int* ptr=&x;
+
+*ptr
+ptr
+&ptr
+
+if(ptr)
+	*ptr=5;
+
+if(ptr!=nullptr)
+	*ptr=5;
+
+const int* ptr=&x;
+int* const ptr=&x;
+const int* const ptr;
+
+int &ref=x;
+ref++;
+const &ref=x;
+
+domanda 9
+
+char c[]="ciao";
+char c[]={'c', 'i', 'a', 'o', '\0'};
+char c[]={'c', 'i', 'a', 'o', 0};
+char c[50]="ciao";
+
+const char *c="ciao";
+
+int i=0;
+while(c[i]!='\n') cout << c[i] << endl;
+
+#include <string>
+string s="ciao";
+
+for(int i=0; s.length(); i++) cout << s[i] << endl;
+
+string s="ciao";
+const char *c=s.c_str();
+
+domanda 10
+
+template<class C>
+class A{
+	private:
+		C x;
+
+
+	public:
+		A(int x){this->x=x;}
+		//~A(){delete[] x;}
+		virtual int foo()=0;
+		template<typename T>
+			T f();
+		friend ostream& operator<<(ostream& os, A& obj);
+};
+
+ostream& operator<<(ostream& os, A& obj){
+
+
+	return os;
+}
+
+template<class C>
+int A::foo(){
+	
+}
+
+template<typename C>
+	template<class T>
+		T f(){
+		
+		}
+
+
+
+A a<int>(100);
+A* a=new a(100);
+delete a;
+
+a.f<int>();
+
+A a{1};
+A a={1};
+A a=100;
+
+class B : public A{
+	private:
+		int y;
+
+	puublic:
+		B(int x, int y) : A(x){
+			this->y=y;
+		}
+};
+
+
+nmespace A{
+	
+	class C{};
+}
+
+using namespace A;
+
+using A::C
+C c;
+
+A::C c;
+
+A* a=new B(60);
+
+int=((B*)a)->foo();
+
+static_cast<B*>(a)->foo()
+
+
+
+
+
+
+
+
+

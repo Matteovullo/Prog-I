@@ -1,0 +1,149 @@
+
+domande prog1:(durata esame 1 = 8 minuti circa.)
+
+1)cosa sono i template:(differenza classi template e funzioni)
+	i template sono dei tipi generici,quando abbiamo funzioni che utilizzano un particolare tipo di dati(int /double...)
+se vogliamo adattare questa funzione ad altri tipi dovremmo di volta in volta riscrivere il codice cambiando i tipi dov'è richiesto.
+questo processo può essere eliminato creando funzioni template ,che quindi utilizzano dati di tipo generico e quindi permettono l'esecuzione senza creare problemi.
+l'utilizzo dei template è possibile anche nelle classi, dandoci la possibilità di creare degli attributi generici.
+		
+2)cosa è una variabile static.
+	la parola static può essere utilizzata per dichiarare variabili di classe. queste variabili devono essere inizializzate e vengono dichiarate insieme
+alle altre variabili di una classe ,la differenza con le variabili di istanza sta nel fatto che,quelle di istanza sono disponibili solo per un singolo oggetto 
+invece,quelle di classe sono condivise tra tutti gli oggetti. una variabile static definita all'interno di una funzione o metodo viene dichiarata e inizializzata 
+solo la prima volta che quelle funzione viene eseguita, nelle iterazioni successive manterrà il valore che aveva al termine dell'esecuzione precedente
+	
+3)refernce(&)
+	é una variabile,che funge da alias per un'altra variabile già dichiarata. una volta definito, un riferimento non può essere riassegnato ad un 
+nuovo valore. non possono essere nulli e devono sempre essere assegnati all'inizializzazione. possono essere utilizzati per passare dati di grandi dimensioni
+		
+4)puntatori(*)
+	il puntatore è una variabile che memorizza un indirizzo di memoria di una variabile. se vogliamo sapere il valore presente in quell'indirizzo 
+di memoria usiamo "*"(dereferenziazione). il puntatore può anche non puntare a nulla (nullptr).i puntatori possono essere utilizzati per l'allocazione 
+dinamica e per avere più di un elemento in output(es. funzioni che tornano un array->torniamo l'indirizzo del primo valore dell'array)
+
+5)scope variabili
+Visibilit`a di una variabile(Scope):porzione del programma(scope) in cui la
+variabile pu`o essere referenziata. Ciclo di vita di una variabile: periodo di
+tempo durante il quale la variabile esiste in memoria.
+In C++ lo scope `e legato ai blocchi di codice. ES:
+v oid cl a s s eA : : m1( i n t x ) {
+i n t y = 2∗x ;
+{
+d ouble z = y / 3;
+w hil e ( y>0){
+32
+z = z /(1+x ) ;
+y−−;
+}// end w hil e
+}// end bl o c c o
+}// end m1
+Scope di variabile y: l’intero corpo di m1! Scope di z: limitato al blocco 3–9!
+Un qualunque blocco pu`o contenere dichiarazioni di variabili al suo interno, tali
+variabili si dicono locali al blocco.Una variabile locale al blocco `e visibile:
+• nel blocco in cui `e definita;
+• in ogni altro blocco contenuto nel blocco definizione.
+Ciclo di vita di una variabile locale al blocco:
+• creazione contestuale all’ingresso nel blocco;
+• distruzione contestuale all’uscita dal blocco.
+
+7)tipi di memoria.
+	stack= memoria accessibile solo nel blocco del main,quando una variabile viene allocata dentro un costrutto if/else/... quella variabile alla 
+fine della condzione non sarà più presente in memoria
+	heap= memoria accessibile in qualsiasi parte del programma,per scrivere dati in questa memoria utilizziamo l'operatore "new"
+
+8)differenaza tra refernce e puntatori
+Il differenza fondamentale tra un puntatore e un riferimento è quello un puntatore è una variabile che memorizza l'indirizzo della posizione di memoria 
+di un'altra variabile mentre a riferimento è una variabile che fa riferimento a un'altra variabile. I due meccanismi, il pointer e riferimento, hanno 
+sintassi e utilizzo diversi.
+Definizione
+Pointer: Un puntatore è l'indirizzo di memoria di un oggetto memorizzato nella memoria di calcolo.
+Riferimento: Un riferimento è un identificativo alternativo o un alias per un oggetto.
+Caratteristiche del puntatore e riferimento
+Dichiarazione
+Pointer: Un puntatore è dichiarato con l'operatore *.
+Riferimento: Un riferimento è dichiarato con l'operatore &.
+dereferenziazione
+Pointer: Una variabile del puntatore richiede che l'operatore * sia dereferenziato.
+Riferimento: Una variabile di riferimento non richiede che nessun operatore venga deferenziato.
+L'inizializzazione
+Pointer:  I puntatori possono essere inizializzati su null. Tali variabili sono chiamate puntatori nulli.
+Riferimento: I riferimenti non possono essere inizializzati su null. Non esiste un riferimento nullo. Un riferimento deve sempre fare riferimento a un oggetto.
+riassegnazioni
+Pointer: Una variabile puntatore può essere riassegnata per fare riferimento a oggetti diversi.
+Riferimento: Una variabile di riferimento non può essere riassegnata. Si riferisce sempre all'oggetto con cui è stato inizializzato.
+uso
+Pointer: Le variabili del puntatore dovrebbero essere utilizzate quando esiste la possibilità di riferirsi a nulla o quando è necessario fare riferimento 
+a cose diverse in momenti diversi.
+Riferimento: Le variabili di riferimento dovrebbero essere usate quando ci sarà sempre un oggetto a cui fare riferimento e quando non è richiesto di usare 
+quella variabile di riferimento per riferirsi a qualsiasi altra cosa che non sia quell'oggetto.
+Applicazione di utilizzo
+Pointer: Le variabili puntatore possono essere utilizzate per implementare algoritmi e strutture dati.
+Riferimento: Le variabili di riferimento possono essere utilizzate nei parametri di funzione e i tipi restituiti definiscono interfacce utili.
+Lingue usate:
+Pointer: Linguaggi di programmazione come C, C ++, Pascal e molti strumenti di supporto per il linguaggio assembly.
+Riferimento: Linguaggi di programmazione come C ++, Java, Python, Perl, PHP, Ruby, ecc. Riferimenti di supporto.
+	
+9)puntatori constanti e a constanti differenze
+	[int* const ptr]-puntatori costanti:puntano ad una variabie e possono cambiare valore di questa tramite dereferenziazione
+	[const int* ptr]-puntatori a costanti(solo lettura):è possibile leggere il dato tramite il puntatore ma non modificare il valore,per 
+farlo dobbiamo agire direttamente sulla variabile
+
+10)overloading di operatori , medoti..promozioni
+	overloading è un tipo di operazione che ci permette di svolgere operazioni tra variabili con tipi che non avrebbero accesso a quelle operazioni, 
+un esempio è la somma tra due stringhe,ovvero creaiamo un metodo che prendi in input due stringhe ed assoccia alla scritta " "Hello" + "world" " 
+un operazione che da in output la stringa "Hello world"
+
+12)lettura e scrittura da file
+	per leggere o scrivere su un file bisogna includere la libreria "fstream", e utilizziamo 3 possbili "tipi" in base a ciò che vogliamo fare
+	ofstream: classe per scrivere su file (output file stream);
+	ifstream: classe per leggere da file (input input stream);
+	fstream: classe per leggere e scrivere da file (file stream);
+
+13)flussi cin e cout e altri tipo, errori vari
+cin `e istanza (static) di classe istream; cout `e istanza (static) di classe ostream;
+Classi istream e ostream costituiscono le classi di base per IO su libreria standard C++; Classi istream e ostream costituiscono implementazione della gestione 
+dei flussi(o canali) di IO;Flussi rappresentano modalita’ di IO a caratteri
+(byte), e sono indipendenti dai dispositivi usati di volta in volta (video,tastiera,
+schede di rete, etc);Oggetto cin opera sullo standard input,cout opera sullo standard output;Standard input generalmente associato a tastiera, standard output
+generalmente associato a video
+
+
+14)overriding vs overloading
+	l'overriding è la creazione all'interno di classe figle di metodi che hanno lo stesso nome di metodi della classe madre
+
+15)segmento data cosa conserviamo?
+	le variabili static
+
+16)metodi friends
+	"friend" è una keyword usata per far si che una funzione, che si trova al di fuori di una classe, possa accedere a metodi ed attributi privati. 
+
+17)metodi virtual
+	il virtual viene solitamente utilizzato come metodo che acquista senso direttamente nelle classi figlie,quindi la sua scrittura nella classe madre 
+serve solo a farci capire che verrà ripreso nelle classi successive
+
+18)errori
+Cerr
+il modo più corretto di mostrare dei messaggi di errore, consiste nell’utilizzare l’oggetto cerr. 
+In questo modo, il sistema potra distinguere tra l’output del programma e i messaggi di errore. 
+Fail()
+Il metodo fail() permette di identificare possibili errori di input output che possono verificarsi quando ad esempio un utente inserisce una stringa 
+al posto di un valore numerico. Il metodo fail() viene richiamato sull’oggetto cin dopo aver letto da input. Esso restituirà true se c’è stato un 
+errore di input (es. una stringa che non può essere convertita in int).
+
+Clean(), Ignore()
+Il metodo clear() di cin permette di resettare i flag di errore di cin ed è utile quando si vuole fare un secondo tentativo di lettura. 
+Dopo aver richiamato clear(), se vogliamo provare a leggere nuovamente da input stream, dobbiamo anche utilizzare l’istruzione cin.ignore 
+(numeric_limits<streamsize>::max() , '\n') che scarterà tutti i caratteri inseriti (fino al massimo numero di caratteri inseribili), 
+fino al carattere di terminazione riga \n. Questa istruzione serve a svuotare il buffer di cin in modo che sia possibile inserire nuovi caratteri. 
+
+Eof()
+Esiste un carattere speciale chiamato eof (end-of-file), che indica la fine di un file, o più in generale di un flusso di dati 
+(vedremo meglio i file più avanti). L’inserimento di questo carattere determina la fine del flusso di dati e imposta di i bit di fallimento di cin.
+Il carattere di end-of-file può anche essere specificato dall’utente quando inserisce un input da terminale. In linux, questo si fa con la combinazione
+ CTRL + D, mentre in windows con CTRL + Z. Possiamo controllare che in cin sia stato inserito il carattere di end of file con il metodo cin.eof().
+
+
+
+	
+	

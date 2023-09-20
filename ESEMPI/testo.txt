@@ -1,0 +1,1 @@
+C++ mette a disposizione le seguenti classi che permettono di gestire l’input/output su file: 
